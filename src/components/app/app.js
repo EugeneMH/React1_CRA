@@ -137,6 +137,19 @@ class App extends Component {
         this.setState({tab});
     }
 
+    onSalaryChange = (name, salary) => {
+        // console.log(this.state.data)
+        this.setState(({data}) => ({
+            data : data.map(item => {
+                if (item.name === name) {
+                    return {...item, salary : salary}
+                }
+                return item;
+            })
+        }))
+        
+    }
+
     render() {
         const {data, warning, term, tab} = this.state;
         const visibleData = this.filterEmployee(this.searchEmployee(data, term), tab);
@@ -150,13 +163,15 @@ class App extends Component {
                     <SearchPanel
                     onUpdateSearch={this.onUpdateSearch}/>
                     <AppFilter
-                    onUpdateFilter={this.onUpdateFilter}/>
+                    onUpdateFilter={this.onUpdateFilter}
+                    tab={this.state.tab}/>
                 </div>
     
                 <EmployeesList 
                 data={visibleData}
                 onDelete={this.deleteItem}
-                onToggleProp={this.onToggleProp}/>
+                onToggleProp={this.onToggleProp}
+                onSalaryChange={this.onSalaryChange}/>
                 <EmployeesAddForm
                 onSubmit={e => this.addItem(e)}
                 warning={warning}/>

@@ -1,60 +1,36 @@
-import { Component } from 'react';
-
 import './app-filter.css';
 
-class AppFilter extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            id : '1'
-        }
-    }
+const AppFilter = (props) => {
 
-    handleClick = (e) => {
-        this.setState(({id}) => ({
-            id : e.target.getAttribute('data-id')
-        }))
-        this.props.onUpdateFilter(e.target.getAttribute('data-id'));
-    }
+    const buttons = [
+        {name: 'All employees', id: '1'},
+        {name: 'Selected for premiums', id : '2'},
+        {name: 'Salary over 1000$', id: '3'},
+    ]
 
-    isActive = (id) => {
-        if (this.state.id === id) {
-            return 'btn btn-light'
-        } else {
-            return 'btn btn-outline-light'
-        }
-    }
+    const elems = buttons.map( ({name, id}) => {
+        const active = props.tab === id //if props.tab === id, return true
 
-    render() {
-
-        // let classNames = "btn";
+        const clazz = active ? 'btn-light' : 'btn-outline-light'
 
         return (
-            <div className="btn-group">
-                <button 
-                    className={this.isActive("1")}
-                    data-id="1"
-                    type="button"
-                    onClick={this.handleClick}>
-                    All employees
-                </button>
-                <button 
-                    className={this.isActive("2")}
-                    data-id="2"
-                    type="button"
-                    onClick={this.handleClick}>
-                    Selected for premiums
-                </button>
-                <button 
-                    className={this.isActive("3")}
-                    data-id="3"
-                    type="button"
-                    onClick={this.handleClick}>
-                    Salary over 1000$
-                </button>
-            </div>
+            <button 
+            className={`btn ${clazz}`}
+            type="button"
+            data-id={id}
+            key={id}
+            onClick={() => props.onUpdateFilter(id)}
+            >
+            {name}
+            </button>
         )
-    }
+    })
+
+    return (
+        <div className="btn-group">
+            {elems}
+        </div>
+    )
 }
 
 export default AppFilter;
