@@ -1,0 +1,19 @@
+.a1 {
+    margin: 10px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.b1 {
+    outline:none;
+}
+
+.result {
+    margin: 10px;
+    border: 1px solid black;
+    min-width:100px;
+    display:inline-block;
+    height:30px;
+}
