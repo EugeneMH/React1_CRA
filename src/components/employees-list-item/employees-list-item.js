@@ -15,11 +15,10 @@ class EmployeesListItem extends Component {
             salary: e.target.value
         }))
         this.props.onSalaryChange(this.props.name, e.target.value)
-        // console.log(this.state.salary);
     }
 
     render() {
-        const {name, salary, onDelete, onToggleProp, premiums, promotion} = this.props;
+        const {name, onDelete, onToggleProp, premiums, promotion} = this.props;
 
         let listClassNames = 'list-group-item d-flex justify-content-between';
     

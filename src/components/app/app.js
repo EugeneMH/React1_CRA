@@ -138,7 +138,6 @@ class App extends Component {
     }
 
     onSalaryChange = (name, salary) => {
-        // console.log(this.state.data)
         this.setState(({data}) => ({
             data : data.map(item => {
                 if (item.name === name) {
