@@ -174,7 +174,14 @@ class App extends Component {
                 <EmployeesAddForm
                 onSubmit={e => this.addItem(e)}
                 warning={warning}/>
-                {/* <TrainingComponent/> */}
+                {/* <TrainingComponent>
+                    <div>
+                        Dynamic child 1
+                    </div>
+                    <div>
+                        Dynamic child 2
+                    </div>
+                </TrainingComponent> */}
             </div>
         )
     }
